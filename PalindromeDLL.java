@@ -1,3 +1,15 @@
+/*
+Given a doubly linked list (DLL) which consists of N elements. Check whether the 
+list is palindrom i.e. reading from right to left, and vice versa it has the same 
+meaning (values). If it is palindrome return 1, otherwise return -1.
+
+Example of a palindrome list:
+
+1 2 3 2 1
+
+This should return 1.
+*/
+
 import java.util.Scanner;
 
 
