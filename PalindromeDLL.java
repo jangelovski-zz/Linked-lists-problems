@@ -12,7 +12,7 @@ This should return 1.
 
 import java.util.Scanner;
 
-
+// Node code
 class DLLNode<E> {
 	protected E element;
 	protected DLLNode<E> pred, succ;
@@ -28,6 +28,7 @@ class DLLNode<E> {
 		return element.toString();
 	}
 }
+// Doubly linked list code
 class DLL<E> {
 	private DLLNode<E> first, last;
 
