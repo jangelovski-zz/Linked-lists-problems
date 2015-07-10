@@ -99,7 +99,7 @@ class DLL<E> {
 			ret = "Prazna lista!!!";
 		return ret;
 	}
-  //funkcija koja gi minusira elementite od vtorata lista
+  //funkcija koja gi minusira elementite od vtorata lista i vrakja rezultantna lista
 	public DLL minus(DLL lista1, DLL lista2){
 		int zname = 1;
 		DLL result = new DLL();
