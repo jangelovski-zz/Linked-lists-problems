@@ -99,31 +99,41 @@ class DLL<E> {
 			ret = "Prazna lista!!!";
 		return ret;
 	}
-  //funkcija koja gi minusira elementite od vtorata lista i vrakja rezultantna lista
+  	//funkcija koja gi minusira elementite od vtorata lista i vrakja rezultantna lista
 	public DLL minus(DLL lista1, DLL lista2){
-		int zname = 1;
-		DLL result = new DLL();
-		DLLNode temp1 = lista1.getFirst();
-		//DLLNode temp2 = lista2.getFirst();
 		
-		while(temp1 != null)
-		{
-			DLLNode temp2 = lista2.getFirst();
-			boolean f = true;
-			while(temp2 != null){
-				if(temp1.element != temp2.element)
-				{
-					temp2 = temp2.succ;
-				}
-				else {
-					f = false;
-					break;
-				}
-			}
-			if(f) result.insertLast(temp1.element);
-			temp1 = temp1.succ;
+		char[] prva = new char[lista1.length()];
+		char[] vtora = new char[lista2.length()];
+		DLLNode temp = lista1.first;
+		DLLNode temp2= lista2.first;
+		int i = 0;
+		while(temp != null){
+			prva[i] = (char)temp.element;
+			temp = temp.succ;
+			i++;
 		}
-		return result;
+		i = 0;
+		while(temp2!= null){
+			vtora[i] = (char)temp2.element;
+			temp2 = temp2.succ;
+			i++;
+		}
+		
+		String str1 = new String(prva);
+		String str2 = new String(vtora);
+		String str3;
+		
+		if(str1.contains(str2)){
+			str3 = str1.replace(str2, "");
+			
+			char[] chArray = str3.toCharArray();
+			lista1.deleteList();
+			DLL pom = new DLL();
+			for(i = 0; i < chArray.length; i++){
+				pom.insertLast(chArray[i]);
+			}
+			return pom;
+		} else return lista1;
 	}
 	public DLLNode<E> getFirst() {
 		return first;
@@ -135,7 +145,6 @@ public class IsSubstring {
 		// TODO Auto-generated method stub
 		DLL<Character> lista1 = new DLL<Character>();
 		DLL<Character> lista2 = new DLL<Character>();
-		DLL<Character> sublist = new DLL<Character>();
 		
 		Scanner in = new Scanner(System.in);
 		String A = in.nextLine();
@@ -150,7 +159,9 @@ public class IsSubstring {
 		for(int i = 0; i < LB.length; i++){
 			lista2.insertLast(LB[i]);
 		} 
-		sublist = sublist.minus(lista1, lista2);
-		System.out.println(sublist.pecatiListaBezSpace());
+		//System.out.println(lista1.pecatiListaBezSpace());
+		//System.out.println(lista2.pecatiListaBezSpace());
+		lista1 = lista1.minus(lista1, lista2);
+		System.out.println(lista1.pecatiListaBezSpace());
 	}
 }
