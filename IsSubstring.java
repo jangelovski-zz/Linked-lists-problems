@@ -102,38 +102,38 @@ class DLL<E> {
   	//funkcija koja gi minusira elementite od vtorata lista i vrakja rezultantna lista
 	public DLL minus(DLL lista1, DLL lista2){
 		
-		char[] prva = new char[lista1.length()];
-		char[] vtora = new char[lista2.length()];
+		char[] prva = new char[lista1.length()]; // kreiram char niza so golemina na prvata lista
+		char[] vtora = new char[lista2.length()]; // kreiram char niza so golemina na vtorata lista
 		DLLNode temp = lista1.first;
 		DLLNode temp2= lista2.first;
-		int i = 0;
+		int i = 0; // brojac za index na char nizata
 		while(temp != null){
-			prva[i] = (char)temp.element;
+			prva[i] = (char)temp.element; //kastirame go elemento u char i go dodavame na prvata char niza
 			temp = temp.succ;
-			i++;
+			i++; // zgolemuvame brojac
 		}
-		i = 0;
+		i = 0; // resetirame brojac i istata postapka ja praveme i za vtorata lista
 		while(temp2!= null){
 			vtora[i] = (char)temp2.element;
 			temp2 = temp2.succ;
 			i++;
 		}
 		
-		String str1 = new String(prva);
-		String str2 = new String(vtora);
-		String str3;
+		String str1 = new String(prva); // tuka kreirame string t.e. konvertirame char niza u string
+		String str2 = new String(vtora); // isto i tuka
+		String str3; // kreirame tret string koj treba da bide rezultanten
 		
-		if(str1.contains(str2)){
-			str3 = str1.replace(str2, "");
+		if(str1.contains(str2)){ // so contains(str2) proveruvame dali str2 e podstring na str1 ako da produzuvame
+			str3 = str1.replace(str2, ""); // so replace() go minusirame str2 od str1 i na negovo mesto stavame 
+							// prazno mesto SO ""
+			char[] chArray = str3.toCharArray(); // tuka pravime obratno t.e. go konvertirame str3 u char[] niza
+			lista1.deleteList(); // ja briseme celata lista
 			
-			char[] chArray = str3.toCharArray();
-			lista1.deleteList();
-			DLL pom = new DLL();
 			for(i = 0; i < chArray.length; i++){
-				pom.insertLast(chArray[i]);
+				lista1.insertLast(chArray[i]); // gi dodavame elementite od transformacijata t.e. odzemanjeto
 			}
-			return pom;
-		} else return lista1;
+			return lista1; // i na kraj ja vrakjame listata
+		} else return lista1; // ako ne e tocen uslovot str2 da e podstring na str1 ja vrakjame originalnata lista
 	}
 	public DLLNode<E> getFirst() {
 		return first;
