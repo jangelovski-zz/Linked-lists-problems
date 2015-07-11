@@ -142,17 +142,17 @@ public class ListaOdListi {
     public static long findMagicNumber(DLL<DLL<Integer>> list) {
 		//Vashiot kod tuka...
         long pro = 1;
-		DLLNode temp = list.getFirst();
+		DLLNode temp = list.getFirst(); // go zemame prviot jazol od listata koj pretstavuva druga lista
 		
-		while(temp != null){
-			DLL<Integer> temp2 = (DLL<Integer>)temp.element;
-			DLLNode<Integer> temp3 = temp2.getFirst();
-			int suma = 0;
+		while(temp != null){ // gi izminuvame site jazli 
+			DLL<Integer> temp2 = (DLL<Integer>)temp.element; // bidejki jazolot pretstavuva lista elementot go kastirame
+			DLLNode<Integer> temp3 = temp2.getFirst(); // za na kraj da dojdeme do prviot jazol od listata koja e jazol na glavnata
+			int suma = 0; // suma na jazlite od listata koja pretstavuva jazol
 			while(temp3 != null){
-				suma += temp3.element;
+				suma += temp3.element; // gi sobirame
 				temp3 = temp3.succ;
 			}
-			pro *= suma;
+			pro *= suma; // i ja mnozime sumata
 			temp = temp.succ;
 		}
 		return pro;
